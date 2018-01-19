@@ -33,7 +33,7 @@ function getCustomerProfileIds()
         $errorMessages = $response->getMessages()->getMessage();
         echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
     }
-    return $profileIds[];
+    return $profileIds;
   }
   
 function getCustomerPaymentProfile($unmaskExpirationDate = true)
