@@ -24,7 +24,7 @@ function getCustomerProfileIds()
     if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
     {
         
-        global $profileIds[] = $response->getIds();
+        $profileIds[] = $response->getIds();
         
      }
     else
@@ -33,7 +33,7 @@ function getCustomerProfileIds()
         $errorMessages = $response->getMessages()->getMessage();
         echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
     }
-    return $response;
+    return $profileIds[];
   }
   
 function getCustomerPaymentProfile($unmaskExpirationDate = true)
@@ -69,18 +69,16 @@ function getCustomerPaymentProfile($unmaskExpirationDate = true)
 			echo "Customer Payment Profile Expiration Date: " . $response->getPaymentProfile()->getPayment()->getCreditCard()->getExpirationDate(). "\n";
 			echo "Customer Payment Profile Card Type: " . $response->getPaymentProfile()->getPayment()->getCreditCard()->getCardType(). "\n";
 		}
-		else
-		{
-			echo "GetCustomerPaymentProfile ERROR :  Invalid response\n";
-			$errorMessages = $response->getMessages()->getMessage();
-		    echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
-		}
+		
 	}
 	else{
 		echo "NULL Response Error";
 	}
 	return $response;
 }
+}
   if(!defined('DONT_RUN_SAMPLES'))
+      getCustomerProfileIds();
+    if(!defined('DONT_RUN_SAMPLES'))
       getCustomerProfileIds();
 ?>
